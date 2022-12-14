@@ -27,3 +27,11 @@ void Produit::quantite_produit(int quantite){
 	assert(status && "quantité négative lors de la mise à jour");
 	_quantite = quantite;
 }
+std::ostream& operator<<(std::ostream& os, const Produit& produit){
+	os << std::endl;
+	os << "Nom du produit : " << produit.get_titre() << std::endl;
+	os << "Description : " << produit.get_description() << std::endl;
+	os << "Prix du produit : " << produit.get_prix_unitaire() << std::endl;
+	os << "Quantité restante : " << produit.get_quantite() << std::endl;
+	return os;
+}

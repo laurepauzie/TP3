@@ -20,5 +20,6 @@ private:
 	bool produit_valide(int quantite,float prix);
 };
 
+std::ostream& operator<<(std::ostream& os, const Produit& produit);
 
 #endif
