@@ -12,6 +12,6 @@ std::vector<Produit> Commande::get_liste_produits(){
 	return _produits_achetes;
 }
 
-bool get_valide(){
+bool Commande::get_valide(){
 	return _valide;
 }

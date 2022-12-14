@@ -1,6 +1,8 @@
 #pragma once
 #ifndef COMMANDE_H
 #define COMMANDE_H
+#include "produit.h"
+#include "client.h"
 
 class Commande{
 public:
@@ -10,7 +12,7 @@ public:
 	bool get_valide();
 
 private: 
-	Client client;
+	Client _client;
 	std::vector<Produit> _produits_achetes;
 	bool _valide;
 
