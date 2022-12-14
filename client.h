@@ -9,6 +9,10 @@
 class Client{
 public:
 	Client(std::string identifiant, std::string nom, std::string prenom, std::vector<Produit> panier_achat);
+	std::string get_identifiant() const;
+	std::string get_nom() const;
+	std::string get_prenom() const;
+	std::vector<Produit> get_panier_achat() const;
 private: 
 	std::string _identifiant;
 	std::string _nom;

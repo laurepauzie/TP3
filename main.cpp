@@ -12,6 +12,7 @@ int main()
 
 	std::vector<Produit> pc;
 	Client c1("lchapus","CHAPUS","Louka",pc);
+	std::cout << c1.get_nom() << std::endl;
 	
 	return 0;
 }
