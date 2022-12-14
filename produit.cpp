@@ -10,3 +10,15 @@ bool Produit::produit_valide(int quantite,float prix){
 	if(prix < 0) return false;
 	return true;
 }
+std::string Produit::get_titre() const{
+	return _titre;
+}
+std::string Produit::get_description() const{
+	return _description;
+}
+int Produit::get_quantite() const{
+	return _quantite;
+}
+float Produit::get_prix_unitaire() const{
+	return _prix_unitaire;
+}
