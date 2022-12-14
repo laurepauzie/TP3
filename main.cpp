@@ -10,7 +10,9 @@ int main()
 	Magasin EasyStore();
 
 	Produit p("PS4","Console de jeu",10,499.99);
-	
+	std::cout << p.get_quantite() << std::endl;
+	p.quantite_produit(80);
+	std::cout << p.get_quantite() << std::endl;
 
 	std::vector<Produit> pc;
 	Client cl("lchapus","CHAPUS","Louka",pc);

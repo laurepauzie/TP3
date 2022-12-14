@@ -11,6 +11,7 @@ public:
 	std::string get_description() const;
 	int get_quantite() const;
 	float get_prix_unitaire() const;
+	void quantite_produit(int quantite);
 private:
 	std::string _titre;
 	std::string _description;
