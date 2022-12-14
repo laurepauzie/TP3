@@ -24,7 +24,7 @@ $(TARGET): $(OBJS)
 clean:
 	rm -f *.o *.d
 
-mrproper: clean
+mrproper: clean 
 	rm -f $(TARGET)
 
 exe: $(TARGET)
