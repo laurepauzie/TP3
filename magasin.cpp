@@ -21,3 +21,10 @@ void Magasin::tous_produits() const{
 		std::cout << p;
 	}
 }
+void Magasin::afficher_produit(std::string nom) const{
+	for(Produit p : _produit){
+		if(p.get_titre()==nom){
+			std::cout << p;
+		}
+	}
+}
