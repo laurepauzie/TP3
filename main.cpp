@@ -5,8 +5,6 @@
 
 int main()
 {
-	std::cout << "test" << std::endl;
-	std::cout << "test" << std::endl;
 
 	Produit p("PS4","Console de jeu",10,499.99);
 	std::cout << p.get_description() << std::endl;

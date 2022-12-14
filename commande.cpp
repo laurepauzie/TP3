@@ -1,11 +1,11 @@
 #include "commande.h"
 
 
-Commande::Commande(Client c1, std::vector<Produit> produits_achetes, bool valide) : _c1(c1), _produits_achetes(produits_achetes), _valide(valide) {
+Commande::Commande(Client client, std::vector<Produit> produits_achetes, bool valide) : _client(client), _produits_achetes(produits_achetes), _valide(valide) {
 }
 
 Client Commande::get_client(){
-	return _c1;
+	return _client;
 }
 
 std::vector<Produit> Commande::get_liste_produits(){
