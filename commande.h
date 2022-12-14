@@ -1,17 +1,17 @@
 #pragma once
 #ifndef COMMANDE_H
 #define COMMANDE_H
-
-#include "client.h"
 #include "produit.h"
+#include "client.h"
 #include <iostream>
 
 class Commande{
 public:
 	Commande(Client client, std::vector<Produit> produits_achetes, bool valide);
-	Client get_client() const;
-	std::vector<Produit> get_liste_produits() const;
-	bool get_valide() const;
+	Client get_client();
+	std::vector<Produit> get_liste_produits();
+	bool get_valide();
+	void set_valide(bool val);
 
 private: 
 	Client _client;
