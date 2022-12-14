@@ -23,11 +23,10 @@ int main()
 	Client lp("lpauzie","PAUZIE","Laure",pc);
 	std::vector<Client> clients = {cl,lp};
 
-	Commande com1(cl, pc, false);
-	//std::cout << com1.get_client() << std::endl;
-
-
-
+	EasyStore.ajout_produit(p1);
+	EasyStore.ajout_produit(p2);
+	EasyStore.tous_produits();
+	EasyStore.afficher_produit("PS4");
 
 	return 0;
 }

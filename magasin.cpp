@@ -16,3 +16,15 @@ std::vector<Commande> Magasin::get_commande() const{
 void Magasin::ajout_produit(Produit produit){
 	_produit.push_back(produit);
 }
+void Magasin::tous_produits() const{
+	for(Produit p : _produit){
+		std::cout << p;
+	}
+}
+void Magasin::afficher_produit(std::string nom) const{
+	for(Produit p : _produit){
+		if(p.get_titre()==nom){
+			std::cout << p;
+		}
+	}
+}

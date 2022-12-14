@@ -15,6 +15,8 @@ public:
 	std::vector<Client> get_client() const;
 	std::vector<Commande> get_commande() const;
 	void ajout_produit(Produit produit);
+	void tous_produits() const;
+	void afficher_produit(std::string nom) const;
 private:
 	std::vector<Produit> _produit;
 	std::vector<Client> _client;
