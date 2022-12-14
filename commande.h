@@ -3,6 +3,7 @@
 #define COMMANDE_H
 #include "produit.h"
 #include "client.h"
+#include <iostream>
 
 class Commande{
 public:
