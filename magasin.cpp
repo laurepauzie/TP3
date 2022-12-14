@@ -13,3 +13,6 @@ std::vector<Client> Magasin::get_client() const{
 std::vector<Commande> Magasin::get_commande() const{
 	return _commande;
 }
+void Magasin::ajout_produit(Produit produit){
+	_produit.push_back(produit);
+}
