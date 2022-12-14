@@ -11,6 +11,7 @@ public:
 	Client get_client();
 	std::vector<Produit> get_liste_produits();
 	bool get_valide();
+	void set_valide(bool val);
 
 private: 
 	Client _client;

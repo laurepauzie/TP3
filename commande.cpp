@@ -15,3 +15,7 @@ std::vector<Produit> Commande::get_liste_produits() {
 bool Commande::get_valide(){
 	return _valide;
 }
+
+void Commande::set_valide(bool val){
+	_valide = val;
+}
