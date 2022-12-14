@@ -23,12 +23,18 @@ int main()
 	Client lp("lpauzie","PAUZIE","Laure",pc);
 	std::vector<Client> clients = {cl,lp};
 
+	cl.ajouter_au_panier(p1);
+	std::cout << cl.get_panier_achat().at(0) << std::endl;
+	cl.vider_panier();
+	std::cout << cl.get_panier_achat().at(0) << std::endl;
+	
+
 	EasyStore.ajout_produit(p1);
 	EasyStore.ajout_produit(p2);
 	//EasyStore.tous_produits();
-	EasyStore.afficher_produit("PS4");
+	//EasyStore.afficher_produit("PS4");
 	EasyStore.quantite_produit("PS4",20);
-	EasyStore.afficher_produit("PS4");
+	//EasyStore.afficher_produit("PS4");
 
 	return 0;
 }

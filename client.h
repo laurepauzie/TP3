@@ -13,6 +13,8 @@ public:
 	std::string get_nom() const;
 	std::string get_prenom() const;
 	std::vector<Produit> get_panier_achat() const;
+	void ajouter_au_panier(Produit produit);
+	void vider_panier();
 private: 
 	std::string _identifiant;
 	std::string _nom;
