@@ -2,9 +2,12 @@
 #include <vector>
 #include "produit.h"
 #include "client.h"
+#include "commande.h"
+#include "magasin.h"
 
 int main()
 {
+	Magasin EasyStore();
 
 	Produit p("PS4","Console de jeu",10,499.99);
 	
