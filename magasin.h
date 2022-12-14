@@ -11,9 +11,9 @@
 class Magasin{
 public:
 	Magasin(std::vector<Produit> produit, std::vector<Client> client, std::vector<Commande> commande);	
-	int get_produit() const;
-	int get_client() const;
-	int get_commande() const;
+	std::vector<Produit> get_produit() const;
+	std::vector<Client> get_client() const;
+	std::vector<Commande> get_commande() const;
 private:
 	std::vector<Produit> _produit;
 	std::vector<Client> _client;
