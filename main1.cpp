@@ -25,7 +25,9 @@ int main()
 
 	EasyStore.ajout_produit(p1);
 	EasyStore.ajout_produit(p2);
-	EasyStore.tous_produits();
+	//EasyStore.tous_produits();
+	EasyStore.afficher_produit("PS4");
+	EasyStore.quantite_produit("PS4",20);
 	EasyStore.afficher_produit("PS4");
 
 	return 0;
