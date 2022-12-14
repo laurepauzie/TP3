@@ -1,28 +1,24 @@
 #pragma once
-#ifndef LECTEUR_H
-#define LECTEUR_H
+#ifndef CLIENT_H
+#define CLIENT_H
 
-#include <iostream>
 #include <vector>
+#include <iostream>
+#include "produit.h"
 
-
-class Lecteur{
+class Client{
 public:
-	Lecteur(std::string identifiant, std::string nom, std::string prenom, std::vector<long int> liste_ISBN);
+	Client(std::string identifiant, std::string nom, std::string prenom, std::vector<Produit> panier_achat);
 	std::string get_identifiant() const;
 	std::string get_nom() const;
 	std::string get_prenom() const;
-	std::vector<long int> get_liste_ISBN() const;
-	void add_ISBN(long int ISBN);
-	void remove_ISBN(long int ISBN);
-	
+	std::vector<Produit> get_panier_achat() const;
 private: 
 	std::string _identifiant;
 	std::string _nom;
 	std::string _prenom;
-	std::vector<long int> _liste_ISBN;
+	std::vector<Produit> _panier_achat;
 };
 
-std::ostream& operator<<(std::ostream& os, const Lecteur& lecteur);
 
 #endif
