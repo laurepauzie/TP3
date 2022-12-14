@@ -15,6 +15,7 @@ public:
 	std::vector<Produit> get_panier_achat() const;
 	void ajouter_au_panier(Produit produit);
 	void vider_panier();
+	void quantite_produit_panier(Produit produit,int quantite);
 private: 
 	std::string _identifiant;
 	std::string _nom;

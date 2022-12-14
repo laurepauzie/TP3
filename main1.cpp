@@ -25,7 +25,7 @@ int main()
 
 	cl.ajouter_au_panier(p1);
 	std::cout << cl.get_panier_achat().at(0) << std::endl;
-	cl.vider_panier();
+	cl.quantite_produit_panier(p1,5);
 	std::cout << cl.get_panier_achat().at(0) << std::endl;
 	
 
