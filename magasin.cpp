@@ -16,3 +16,8 @@ std::vector<Commande> Magasin::get_commande() const{
 void Magasin::ajout_produit(Produit produit){
 	_produit.push_back(produit);
 }
+void Magasin::tous_produits() const{
+	for(Produit p : _produit){
+		std::cout << p;
+	}
+}
