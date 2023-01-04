@@ -42,8 +42,10 @@ int main()
 	lc.quantite_produit_panier(p5,4);
 
 	EasyStore.achat_client(lc);
-
 	EasyStore.afficher_tous_produits();
+
+	EasyStore.afficher_historique_client(lc);
+
 
 	return 0;
 }

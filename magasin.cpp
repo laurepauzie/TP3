@@ -32,7 +32,9 @@ void Magasin::afficher_tous_produits() const{
 void Magasin::afficher_produit(std::string nom) const{
 	int tmp=0;
 	for(Produit p : _produit){
-		detail_produit(p);
+		if(p.get_titre()==nom){
+			detail_produit(p);
+		}
 	}
 	if(tmp==0){
 		std::cout << "Le produit recherché n'est pas dans le magasin." << std::endl;
@@ -73,4 +75,17 @@ void Magasin::achat_client(Client& client){
 		}
 	}
 	client.vider_panier();
+	_client.push_back(client);
+}
+void Magasin::afficher_historique_commandes() const{
+	for(Commande com : _commande){
+		std::cout << com;
+	}
+}
+void Magasin::afficher_historique_client(Client client){
+	for(int k=0;k<_client.size();++k){
+		if(client.get_identifiant()==_commande.at(k).get_client().get_identifiant()){
+			std::cout << _commande.at(k);
+		}
+	}
 }
