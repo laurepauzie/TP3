@@ -18,6 +18,7 @@ public:
 	void afficher_tous_produits() const;
 	void afficher_produit(std::string nom) const;
 	void quantite_produit(std::string nom,int quantite);
+	void achat_client(Client& client);
 private:
 	std::vector<Produit> _produit;
 	std::vector<Client> _client;
