@@ -63,6 +63,8 @@ void Magasin::achat_client(Client& client){
 			}
 		}
 	}
+
+	
 	Commande commande(client,client.get_panier_achat(),tmp);
 	_commande.push_back(commande);
 	if(tmp){
@@ -79,7 +81,7 @@ void Magasin::achat_client(Client& client){
 }
 void Magasin::afficher_historique_commandes() const{
 	for(Commande com : _commande){
-		std::cout << com;
+		panier(com);
 	}
 }
 void Magasin::afficher_historique_client(Client client){

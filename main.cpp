@@ -13,7 +13,6 @@ int main()
 	std::vector<Commande> commande  = {};
 	Magasin EasyStore(produit,client,commande);
 
-
 	Produit p1("PS4","Console de jeu Nitendo",10,499.99);
 	Produit p2("Clavier DELL","Clavier",1,29.99);
 	Produit p3("Stylo","Stylo bleu a encre",5,3.99);
@@ -35,17 +34,27 @@ int main()
 	EasyStore.ajout_produit(p4);
 	EasyStore.ajout_produit(p5);
 
-	EasyStore.afficher_tous_produits();
+	//EasyStore.afficher_tous_produits();
 
 	lc.ajouter_au_panier(p1);
 	lc.ajouter_au_panier(p5);
 	lc.quantite_produit_panier(p5,4);
 
 	EasyStore.achat_client(lc);
+	//EasyStore.afficher_tous_produits();
+
+	//EasyStore.afficher_historique_client(lc);
+
+	lp.ajouter_au_panier(p3);
+	lp.ajouter_au_panier(p4);
+	lp.quantite_produit_panier(p4,20);
+
 	EasyStore.afficher_tous_produits();
+	
+	EasyStore.achat_client(lp);
 
-	EasyStore.afficher_historique_client(lc);
+	EasyStore.afficher_historique_commandes();
 
-
+	EasyStore.afficher_tous_produits();
 	return 0;
 }
