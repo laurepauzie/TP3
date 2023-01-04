@@ -27,11 +27,43 @@ void Produit::quantite_produit(int quantite){
 	assert(status && "quantité négative lors de la mise à jour");
 	_quantite = quantite;
 }
+void detail_produit(Produit& produit){
+	std::string ligne="--------------------------------------------------------------------------";
+	std::cout << ligne << std::endl;
+	std::cout << "| Détail du produit                                                      |" << std::endl;
+	std::cout << "|------------------------------------------------------------------------|" << std::endl;
+	std::cout << "| " << produit << "  |" << std::endl;
+	std::cout << ligne << std::endl;
+}
+
 std::ostream& operator<<(std::ostream& os, const Produit& produit){
-	os << std::endl;
-	os << "Nom du produit : " << produit.get_titre() << std::endl;
-	os << "Description : " << produit.get_description() << std::endl;
-	os << "Prix du produit : " << produit.get_prix_unitaire() << " €" << std::endl;
-	os << "Quantité : " << produit.get_quantite() << std::endl;
+	os << produit.get_titre();
+	for(int k=produit.get_titre().size();k<19;k++){
+		os << " ";
+	}
+	os << " " << produit.get_description();
+	for(int k=produit.get_description().size();k<29;k++){
+		os << " ";
+	}
+	
+	if(produit.get_quantite()>=100){
+		os << " (" << produit.get_quantite() << ")     ";
+	}
+	if(produit.get_quantite()<10){
+		os << " (" << produit.get_quantite() << ")       ";
+	}
+	if(produit.get_quantite()>=10 && produit.get_quantite()<100){
+		os << " (" << produit.get_quantite() << ")      ";
+	}
+	
+	if(produit.get_prix_unitaire()<100.0 && produit.get_prix_unitaire()>=10.0){
+		os << produit.get_prix_unitaire() << "  € ";
+	}
+	if(produit.get_prix_unitaire()<10.0){
+		os << produit.get_prix_unitaire() << "   € ";
+	}
+	if(produit.get_prix_unitaire()>=100.0){
+		os << produit.get_prix_unitaire() << " € ";
+	}
 	return os;
 }

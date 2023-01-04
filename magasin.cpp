@@ -16,10 +16,18 @@ std::vector<Commande> Magasin::get_commande() const{
 void Magasin::ajout_produit(Produit produit){
 	_produit.push_back(produit);
 }
-void Magasin::tous_produits() const{
+void Magasin::afficher_tous_produits() const{
+	std::string ligne="--------------------------------------------------------------------------";
+	std::cout << ligne << std::endl;
+	std::cout << "| Détails de tous les produits du magasin                                |" << std::endl;
+	std::cout << "|------------------------------------------------------------------------|" << std::endl;
+	std::cout << "| Nom                Description                  Quantité    Prix       |" << std::endl;
+	std::cout << "|------------------------------------------------------------------------|" << std::endl;
+	
 	for(Produit p : _produit){
-		std::cout << p;
+		std::cout << "| " << p << "  |" << std::endl;
 	}
+	std::cout << ligne << std::endl;
 }
 void Magasin::afficher_produit(std::string nom) const{
 	int tmp=0;

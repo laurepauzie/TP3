@@ -21,5 +21,6 @@ private:
 };
 
 std::ostream& operator<<(std::ostream& os, const Produit& produit);
+void detail_produit(Produit& produit);
 
 #endif

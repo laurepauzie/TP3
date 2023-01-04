@@ -22,14 +22,10 @@ void Commande::set_valide(bool val) {
 
 std::ostream& operator<<(std::ostream& os, const Commande& commande){
 	os << std::endl;
-	os << "Client : " << commande.get_client(). << std::endl;
-	for(Client c : commande.get_client()){
-		os << c << " - ";
-	}
-	os << std::endl;
+	os << "Client : " << commande.get_client() << std::endl;
 
 	os << "Liste des produits achetés : ";
-	for(Produit k : commande.get_liste_produits()){
+	for(Produit& k : commande.get_liste_produits()){
 		os << k << " ,";
 	}
 	os << std::endl;

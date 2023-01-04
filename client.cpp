@@ -29,3 +29,26 @@ void Client::quantite_produit_panier(Produit produit,int quantite){
 		}
 	}
 }
+void Client::supprimer_produit_panier(Produit produit){
+	int j=0;
+	int k=-1;
+	for(Produit& p : _panier_achat){
+		if(p.get_titre()==produit.get_titre()){
+			k=j;
+		}
+		j++;
+	}
+	if(k==-1){
+		std::cout << "Le produit n'est pas dans le panier." << std::endl;
+	}
+	else{
+		_panier_achat.erase(_panier_achat.begin()+k);
+	}
+}
+
+std::ostream& operator<<(std::ostream& os, const Client& client){
+	os << std::endl;
+	os << "Nom du client : " << client.get_nom() << std::endl;
+	os << "Prénom de client : " << client.get_prenom() << std::endl;
+	return os;
+}
