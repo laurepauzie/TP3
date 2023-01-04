@@ -21,5 +21,6 @@ private:
 };
 
 std::ostream& operator<<(std::ostream& os, const Commande& commande);
+void panier(Commande& commande);
 
 #endif

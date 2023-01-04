@@ -28,7 +28,7 @@ int main()
 	Client lp("lpauzie","PAUZIE","Laure",pc);
 	std::vector<Client> clients = {lc,lp};
 
-
+	
 	EasyStore.ajout_produit(p1);
 	EasyStore.ajout_produit(p2);
 	EasyStore.ajout_produit(p3);
