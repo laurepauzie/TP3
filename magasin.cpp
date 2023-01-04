@@ -85,7 +85,7 @@ void Magasin::afficher_historique_commandes() const{
 	}
 }
 void Magasin::afficher_historique_client(Client client){
-	for(int k=0;k<_client.size();++k){
+	for(long unsigned int k=0;k<_client.size();++k){
 		if(client.get_identifiant()==_commande.at(k).get_client().get_identifiant()){
 			std::cout << _commande.at(k);
 		}

@@ -23,7 +23,7 @@ float Produit::get_prix_unitaire() const{
 	return _prix_unitaire;
 }
 void Produit::quantite_produit(int quantite){
-	bool status = (quantite>0);
+	bool status = (quantite>=0);
 	assert(status && "quantité négative lors de la mise à jour");
 	_quantite = quantite;
 }
