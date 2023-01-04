@@ -80,8 +80,11 @@ void Magasin::achat_client(Client& client){
 	_client.push_back(client);
 }
 void Magasin::afficher_historique_commandes() const{
+	std::cout << "-----------------------------------------------------------------" << std::endl;
+	std::cout << "|                 Historique global des commandes               |" << std::endl;
+	std::cout << "-----------------------------------------------------------------" << std::endl;
 	for(Commande com : _commande){
-		panier(com);
+		std::cout << com << std::endl;
 	}
 }
 void Magasin::afficher_historique_client(Client client){

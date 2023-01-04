@@ -32,7 +32,7 @@ int main()
 	EasyStore.ajout_produit(p4);
 	EasyStore.ajout_produit(p5);
 
-	EasyStore.afficher_tous_produits();
+	//EasyStore.afficher_tous_produits();
 
 	lc.ajouter_au_panier(p1);
 	lc.ajouter_au_panier(p5);
@@ -52,9 +52,9 @@ int main()
 	
 	EasyStore.achat_client(lp);
 
-	//EasyStore.afficher_historique_commandes();
+	EasyStore.afficher_historique_commandes();
 
-	EasyStore.afficher_tous_produits();
+	//EasyStore.afficher_tous_produits();
 	
 	return 0;
 }

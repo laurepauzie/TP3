@@ -47,8 +47,15 @@ void Client::supprimer_produit_panier(Produit produit){
 }
 
 std::ostream& operator<<(std::ostream& os, const Client& client){
-	os << std::endl;
-	os << "Nom du client : " << client.get_nom() << std::endl;
-	os << "Prénom de client : " << client.get_prenom() << std::endl;
+	os << "| Nom du client : " << client.get_nom();
+	for(int k=client.get_nom().size();k<55;k++){
+		os << " ";
+	}
+	os << "|" << std::endl;
+	os << "| Prénom de client : " << client.get_prenom();
+	for(int k=client.get_prenom().size();k<52;k++){
+		os << " ";
+	}
+	os << "|" << std::endl;
 	return os;
 }
