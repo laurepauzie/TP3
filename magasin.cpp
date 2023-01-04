@@ -32,10 +32,7 @@ void Magasin::afficher_tous_produits() const{
 void Magasin::afficher_produit(std::string nom) const{
 	int tmp=0;
 	for(Produit p : _produit){
-		if(p.get_titre()==nom){
-			std::cout << p;
-			tmp=1;
-		}
+		detail_produit(p);
 	}
 	if(tmp==0){
 		std::cout << "Le produit recherché n'est pas dans le magasin." << std::endl;
@@ -44,7 +41,7 @@ void Magasin::afficher_produit(std::string nom) const{
 void Magasin::quantite_produit(std::string nom,int quantite){
 	int tmp=0;
 	for(Produit& p : _produit){
-		if(p.get_titre()==nom){
+		if(p.get_titre() == nom){
 			p.quantite_produit(quantite);
 			tmp=1;
 		}
@@ -52,4 +49,28 @@ void Magasin::quantite_produit(std::string nom,int quantite){
 	if(tmp==0){
 		std::cout << "Le produit recherché n'est pas dans le magasin." << std::endl;
 	}
+}
+void Magasin::achat_client(Client& client){
+	bool tmp=true;
+	for(Produit& prod1 : client.get_panier_achat()){
+		for(Produit& prod2 : _produit){
+			if(prod1.get_titre()==prod2.get_titre()){
+				if(prod2.get_quantite()<prod1.get_quantite()){
+					tmp=false;
+				}
+			}
+		}
+	}
+	Commande commande(client,client.get_panier_achat(),tmp);
+	_commande.push_back(commande);
+	if(tmp){
+		for(Produit& prod1 : client.get_panier_achat()){
+			for(Produit& prod2 : _produit){
+				if(prod1.get_titre()==prod2.get_titre()){
+					prod2.quantite_produit(prod2.get_quantite()-prod1.get_quantite());
+				}
+			}
+		}
+	}
+	client.vider_panier();
 }

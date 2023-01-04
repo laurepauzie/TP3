@@ -28,18 +28,22 @@ int main()
 	Client lp("lpauzie","PAUZIE","Laure",pc);
 	std::vector<Client> clients = {lc,lp};
 
-	//std::cout << lc;
-
-	Commande com1(lc, pc1, false);
-	//std::cout << com1;
 
 	EasyStore.ajout_produit(p1);
 	EasyStore.ajout_produit(p2);
 	EasyStore.ajout_produit(p3);
 	EasyStore.ajout_produit(p4);
 	EasyStore.ajout_produit(p5);
+
 	EasyStore.afficher_tous_produits();
 
+	lc.ajouter_au_panier(p1);
+	lc.ajouter_au_panier(p5);
+	lc.quantite_produit_panier(p5,4);
+
+	EasyStore.achat_client(lc);
+
+	EasyStore.afficher_tous_produits();
 
 	return 0;
 }
