@@ -50,8 +50,10 @@ void Client::afficher_panier_achat(){
 	std::string ligne =
       "--------------------------------------------------------------------------";
     std::cout << ligne << std::endl;
-    std::cout << "| Panier                                                                 |"
-            << std::endl;
+    std::cout << "| Panier : " << _nom;
+	std::cout << " ";
+	std::cout << _prenom;
+    std::cout << " |" << std::endl;
     std::cout << "--------------------------------------------------------------------------"
             << std::endl;
     for(Produit p : _panier_achat){
