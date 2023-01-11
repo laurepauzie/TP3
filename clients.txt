@@ -1,0 +1,1 @@
+test d'écriture d'une ligne.
