@@ -46,6 +46,20 @@ void Client::supprimer_produit_panier(Produit produit){
 	}
 }
 
+void Client::afficher_panier_achat(){
+	std::string ligne =
+      "--------------------------------------------------------------------------";
+    std::cout << ligne << std::endl;
+    std::cout << "| Panier                                                                 |"
+            << std::endl;
+    std::cout << "--------------------------------------------------------------------------"
+            << std::endl;
+    for(Produit p : _panier_achat){
+		std::cout << "| " << p << "  |" << std::endl;
+	}
+	std::cout << ligne << std::endl;
+}
+
 std::ostream& operator<<(std::ostream& os, const Client& client){
 	os << "| Nom du client : " << client.get_nom();
 	for(int k=client.get_nom().size();k<55;k++){
@@ -57,5 +71,7 @@ std::ostream& operator<<(std::ostream& os, const Client& client){
 		os << " ";
 	}
 	os << "|" << std::endl;
+
 	return os;
 }
+

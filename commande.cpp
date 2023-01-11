@@ -16,11 +16,11 @@ void Commande::set_valide(bool val) { _valide = val; }
 
 void panier(Commande &commande) {
   std::string ligne =
-      "----------------------------------------------------------";
+      "-----------------------------------------------------------";
   std::cout << ligne << std::endl;
   std::cout << "| Panier                                                  |"
             << std::endl;
-  std::cout << "----------------------------------------------------------"
+  std::cout << "-----------------------------------------------------------"
             << std::endl;
   std::cout << commande << std::endl;
 }

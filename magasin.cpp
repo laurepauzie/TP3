@@ -94,3 +94,13 @@ void Magasin::afficher_historique_client(Client client){
 		}
 	}
 }
+
+void Magasin::ajouter_panier_achat_client(Produit produit, Client& client){
+	client.ajouter_au_panier(produit);
+}
+void Magasin::supprimer_panier_achat_client(Produit produit, Client& client){
+	client.supprimer_produit_panier(produit);
+}
+void Magasin::modifier_quantite_produit_panier_client(Produit produit, Client& client, int quantite){
+	client.quantite_produit_panier(produit, quantite);
+}

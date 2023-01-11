@@ -24,21 +24,31 @@ int main() {
   std::vector<Client> clients = {cl, lp};
 
   Commande com1(lp, pc1, 1);
-  panier(com1);
+  //panier(com1);
   // std::cout << com1 << std::endl;
 
   cl.ajouter_au_panier(p1);
+  cl.ajouter_au_panier(p5);
   // std::cout << cl.get_panier_achat().at(0) << std::endl;
   cl.quantite_produit_panier(p1, 5);
+  cl.quantite_produit_panier(p5, 3);
   // std::cout << cl.get_panier_achat().at(0) << std::endl;
 
   EasyStore.ajout_produit(p1);
   EasyStore.ajout_produit(p2);
-  // EasyStore.tous_produits();
-  // EasyStore.afficher_produit("PS4");
+  //EasyStore.afficher_tous_produits();
+  //EasyStore.afficher_produit("PS4");
   EasyStore.quantite_produit("PS4", 20);
   EasyStore.quantite_produit("Clavier DELL", 20);
-  // EasyStore.afficher_produit("PS4");
+  //EasyStore.afficher_produit("PS4");
+
+  EasyStore.ajouter_panier_achat_client(p2, cl);
+  EasyStore.ajouter_panier_achat_client(p3, lp);
+  cl.afficher_panier_achat();
+  EasyStore.supprimer_panier_achat_client(p2, cl);
+  EasyStore.modifier_quantite_produit_panier_client(p2, lp, 2);
+  cl.afficher_panier_achat();
+  lp.afficher_panier_achat();
 
   return 0;
 }

@@ -17,6 +17,7 @@ public:
 	void vider_panier();
 	void quantite_produit_panier(Produit produit,int quantite);
 	void supprimer_produit_panier(Produit produit);
+	void afficher_panier_achat();
 private: 
 	std::string _identifiant;
 	std::string _nom;

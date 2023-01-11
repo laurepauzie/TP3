@@ -21,6 +21,10 @@ public:
 	void achat_client(Client& client);
 	void afficher_historique_commandes() const;
 	void afficher_historique_client(Client client);
+	void ajouter_panier_achat_client(Produit produit, Client& client);
+	void supprimer_panier_achat_client(Produit produit, Client& client);
+	void modifier_quantite_produit_panier_client(Produit produit, Client& client, int quantite);
+
 private:
 	std::vector<Produit> _produit;
 	std::vector<Client> _client;
