@@ -121,62 +121,79 @@ void Magasin::lecture_donne(){
 	int indice_client=0;
 	std::array<std::string,4> client={};
 	std::vector<Produit> panier_achat={};
+
 	std::ifstream fichier_client;
 	fichier_client.open("clients.txt");
-	while (std::getline(fichier_client, ligne_client)) {
-        std::getline(fichier_client, ligne_client);
-        for(long unsigned int k=0;k<ligne_client.size();++k){
-        	if(ligne_client.at(k)==';'){
+	while (std::getline(fichier_client, ligne_client))
+	{
+      for(long unsigned int k=0;k<ligne_client.size();++k){
+        	if(ligne_client.at(k)==';')
+        	{
         		indice_client++;
         	}
-        	else{
+        	else
+        	{
         		client.at(indice_client)+=ligne_client.at(k);
         	}
-        }
-        Client c(client.at(0),client.at(1),client.at(2),panier_achat);
-        _client.push_back(c);
-        client={};
-        indice_client=0;
-        std::cout << ligne_client << std::endl;
+      }
+      Client c(client.at(0),client.at(1),client.at(2),panier_achat);
+      _client.push_back(c);
+      client={};
+      indice_client=0;
     }
+	fichier_client.close();
 
 
 	std::string ligne_produit="";
-	std::array<std::string,4> produit={};
 	int indice_produit=0;
+	std::array<std::string,4> produit={};
+
 	std::ifstream fichier_produit;
 	fichier_produit.open("produits.txt");
-	int nb_ligne_produit = 0;
-	while (std::getline(fichier_produit, ligne_produit)){
-		nb_ligne_produit++;
-	}
-	fichier_produit.close();
-
-	std::cout << nb_ligne_produit << std::endl;
-	fichier_produit.open("produits.txt");
-	for(int i=0;i<nb_ligne_produit;++i){
-		std::getline(fichier_produit, ligne_produit);
-        for(long unsigned int k=0;k<ligne_produit.size();++k){
-        	if(ligne_produit.at(k)==';'){
+	while (std::getline(fichier_produit, ligne_produit))
+	{
+      for(long unsigned int k=0;k<ligne_produit.size();++k)
+      {
+        	if(ligne_produit.at(k)==';')
+        	{
         		indice_produit++;
         	}
-        	else{
+        	else
+        	{
         		produit.at(indice_produit)+=ligne_produit.at(k);
         	}
-        }
-        Produit p(produit.at(0),produit.at(1),std::stoi(produit.at(2)),std::stof(produit.at(3)));
-        _produit.push_back(p);
-        produit={};
-        indice_produit=0;
-        std::cout << ligne_produit << std::endl;
-    }
+      }
+      Produit p(produit.at(0),produit.at(1),std::stoi(produit.at(2)),std::stof(produit.at(3)));
+      _produit.push_back(p);
+      produit={};
+      indice_produit=0;
+   }
 	fichier_produit.close();
 
+
 	std::string ligne_commande="";
+	int indice_commande=0;
+	std::array<std::string,3> commande={};
+
 	std::ifstream fichier_commande;
 	fichier_commande.open("commandes.txt");
-	while (std::getline(fichier_commande, ligne_commande)) {
-        std::cout << ligne_commande << std::endl;
-    }
+	while (std::getline(fichier_commande, ligne_commande))
+	{
+		for(long unsigned int k=0;k<ligne_commande.size();++k)
+      {
+        	if(ligne_commande.at(k)==';')
+        	{
+        		indice_commande++;
+        	}
+        	else
+        	{
+        		commande.at(indice_commande)+=ligne_commande.at(k);
+        	}
+      }
+      //Commande c(commande.at(0),commande.at(1),commande.at(2));
+      //_commande.push_back(c);
+      commande={};
+      indice_commande=0;
+   }
 	fichier_commande.close();
 }
