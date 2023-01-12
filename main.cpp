@@ -8,11 +8,13 @@
 #include "magasin.h"
 #include "unistd.h"
 
+//prototype des focntions utilisé plustard dans le programme
 void start(Magasin& magasin);
 void gestion_magasin(Magasin& magasin);
 void ajout_produit(Magasin& magasin);
 void afficheage_produit(Magasin& magasin);
 void ajout_client(Magasin& magasin);
+void suprimer_produit(Magasin& magasin);
 
 int main()
 {
@@ -128,7 +130,7 @@ void gestion_magasin(Magasin& magasin)
 	std::cout << "| Ajouter un client :       4                                                    |\n";
 	std::cout << "| Revenir au menu :         5                                                    |\n";
 	std::cout << "==================================================================================\n";
-
+	std::cout << "> ";
 	int choix=0;
 	std::cin >> choix;
 
@@ -136,7 +138,7 @@ void gestion_magasin(Magasin& magasin)
 		ajout_produit(magasin);
 	}
 	if(choix==2){
-
+		suprimer_produit(magasin);
 	}
 	if(choix==3){
 		afficheage_produit(magasin);
@@ -162,21 +164,28 @@ void ajout_produit(Magasin& magasin){
 	std::cout << "|                               AJOUT D'UN PRODUIT                               |\n";
 	std::cout << "|================================================================================|\n";
 	std::cout << "| Nom du produit :                                                               |\n";
+	std::cout << "|--------------------------------------------------------------------------------|\n";
+	std::cout << "> ";
 	std::string nom="";
 	std::cin >> nom;
 	for(Produit& p : magasin.get_produit())
 	{
 		if(nom==p.get_titre())
 		{
+			std::cout << "|--------------------------------------------------------------------------------|\n";
 			std::cout << "| Un produit avec le même nom est déjà dans le magasin, voulez-vous mettre à jour|\n";
 			std::cout << "| la quantité de ce produit ?                                                    |\n";
 			std::cout << "| o pour oui et n pout non                                                       |\n";
+			std::cout << "|--------------------------------------------------------------------------------|\n";
+			std::cout << "> ";
 			std::string produit_double="";
 			std::cin >> produit_double;
 			if(produit_double=="o" || produit_double=="O")
 			{
 				std::cout << "|--------------------------------------------------------------------------------|\n";
 				std::cout << "| Entrez la nouvelle quantité pour le produit : ";
+				std::cout << "|--------------------------------------------------------------------------------|\n";
+				std::cout << "> ";
 				int quantite=0;
 				std::cin >> quantite;
 				p.quantite_produit(quantite);
@@ -193,22 +202,55 @@ void ajout_produit(Magasin& magasin){
 	}
 	std::cout << "|--------------------------------------------------------------------------------|\n";
 	std::cout << "| Description du produit :                                                       |\n";
+	std::cout << "|--------------------------------------------------------------------------------|\n";
+	std::cout << "> ";
 	std::string phrase;
 	std::cin.ignore();
 	getline(std::cin, phrase);
 
 	std::cout << "|--------------------------------------------------------------------------------|\n";
 	std::cout << "| Quantité à ajouter dans le magasin :                                           |\n";
+	std::cout << "|--------------------------------------------------------------------------------|\n";
+	std::cout << "> ";
 	int quantite_p=0;
 	std::cin >> quantite_p;
 
 	std::cout << "|--------------------------------------------------------------------------------|\n";
 	std::cout << "| Prix unitaire du produit :                                                     |\n";
+	std::cout << "|--------------------------------------------------------------------------------|\n";
+	std::cout << "> ";
 	float prix=0.0;
 	std::cin >> prix;
 	Produit produit(nom,phrase,quantite_p,prix);
 	magasin.ajout_produit(produit);
 	gestion_magasin(magasin);
+}
+void suprimer_produit(Magasin& magasin){
+	system("clear");
+	std::cout << "==================================================================================\n";
+	std::cout << "|                               GESTION DU MAGASIN                               |\n";
+	std::cout << "|================================================================================|\n";
+	std::cout << "|                               AFFICHER UN PRODUIT                              |\n";
+	std::cout << "|--------------------------------------------------------------------------------|\n";
+	std::cout << "| Saisissez le nom du produit à supprimer parmis les noms suivants :             |\n";
+	std::cout << "|--------------------------------------------------------------------------------|\n";
+	for(Produit p : magasin.get_produit())
+	{
+		std::cout << "|   " << p.get_titre();
+		for(int k=p.get_titre().size();k<77;++k)
+		{
+			std::cout << " ";
+		}
+		std::cout << "|\n";
+	}
+	std::cout << "==================================================================================\n";
+	std::cout << "> ";
+	std::string nom;
+	std::cin >> nom;
+	for(Produit p : magasin.get_produit())
+	{
+		
+	}
 }
 
 void afficheage_produit(Magasin& magasin){
@@ -217,25 +259,38 @@ void afficheage_produit(Magasin& magasin){
 	std::cout << "|                               GESTION DU MAGASIN                               |\n";
 	std::cout << "|================================================================================|\n";
 	std::cout << "|                               AFFICHER UN PRODUIT                              |\n";
-	std::cout << "|================================================================================|\n";
-	std::cout << "| Nom du produit à afficher (écrire 'tous' pour tous les afficher)               |\n";
+	std::cout << "|--------------------------------------------------------------------------------|\n";
+	std::cout << "| Saisissez le nom du produit à afficher parmis les noms suivants :              |\n";
+	std::cout << "| (écrire 'tous' pour tous les afficher)                                         |\n";
+	std::cout << "|--------------------------------------------------------------------------------|\n";
+	for(Produit p : magasin.get_produit())
+	{
+		std::cout << "|   " << p.get_titre();
+		for(int k=p.get_titre().size();k<77;++k)
+		{
+			std::cout << " ";
+		}
+		std::cout << "|\n";
+	}
+
+	std::cout << "==================================================================================\n";
 	std::string nom;
 	std::cin >> nom;
 	if(nom=="tous"){
 		system("clear");
 		magasin.afficher_tous_produits();
-		std::cout << "|================================================================================|\n";
+		std::cout << "==================================================================================\n";
 		std::cout << "| Appuyer sur un touche pour revnenir au menu.                                   |\n";
-		std::cout << "|================================================================================|\n";
+		std::cout << "==================================================================================\n";
 		std::cin >> nom;
 		gestion_magasin(magasin);
 	}
 	else{
 		system("clear");
 		magasin.afficher_produit(nom);
-		std::cout << "|================================================================================|\n";
+		std::cout << "==================================================================================\n";
 		std::cout << "| Appuyer sur un touche pour revnenir au menu.                                   |\n";
-		std::cout << "|================================================================================|\n";
+		std::cout << "==================================================================================\n";
 		std::cin >> nom;
 		gestion_magasin(magasin);
 	}
@@ -246,9 +301,11 @@ void ajout_client(Magasin& magasin){
 	std::cout << "==================================================================================\n";
 	std::cout << "|                               GESTION DU MAGASIN                               |\n";
 	std::cout << "|================================================================================|\n";
-	std::cout << "|                         	     AJOUT D'UN CLIENT                               |\n";
+	std::cout << "|                         	   AJOUT D'UN CLIENT                               |\n";
 	std::cout << "|================================================================================|\n";
-	std::cout << "| Nom du client :                                                               |\n";
+	std::cout << "| Nom du client :                                                                |\n";
+	std::cout << "|--------------------------------------------------------------------------------|\n";
+	std::cout << "> ";
 	std::string nom="";
 	std::cin >> nom;
 }

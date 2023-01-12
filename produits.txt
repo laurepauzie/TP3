@@ -1,3 +1,4 @@
 PS4;Console de jeu Nitendo;10;499.99
 Clavier;Clavier DELL;1;29.99
 Stylo;Stylo bleu a encre;5;3.99
+Telephone;Smartphone de la marque Samsung;20;449.99

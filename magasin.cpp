@@ -197,3 +197,13 @@ void Magasin::lecture_donne(){
    }
 	fichier_commande.close();
 }
+
+void Magasin::supprimer_produit(Produit produit){
+	int indice=0;
+	for(int k=0;k<_produit.size();++k)
+	{
+		if(_produit.at(k).get_titre()==produit.get_titre()){
+			indice=k;
+		}
+	}
+}

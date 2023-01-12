@@ -28,10 +28,10 @@ void Produit::quantite_produit(int quantite){
 	_quantite = quantite;
 }
 void detail_produit(Produit& produit){
-	std::string ligne="--------------------------------------------------------------------------";
+	std::string ligne="------------------------------------------------------------------------------------";
 	std::cout << ligne << std::endl;
-	std::cout << "| Détail du produit                                                      |" << std::endl;
-	std::cout << "|------------------------------------------------------------------------|" << std::endl;
+	std::cout << "| Détail du produit                                                                |" << std::endl;
+	std::cout << "|----------------------------------------------------------------------------------|" << std::endl;
 	std::cout << "| " << produit << "  |" << std::endl;
 	std::cout << ligne << std::endl;
 }
@@ -42,7 +42,7 @@ std::ostream& operator<<(std::ostream& os, const Produit& produit){
 		os << " ";
 	}
 	os << " " << produit.get_description();
-	for(int k=produit.get_description().size();k<29;k++){
+	for(int k=produit.get_description().size();k<49;k++){
 		os << " ";
 	}
 	
