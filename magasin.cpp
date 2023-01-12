@@ -24,10 +24,10 @@ void Magasin::ajout_produit(Produit produit){
 void Magasin::afficher_tous_produits() const{
 	std::string ligne="--------------------------------------------------------------------------";
 	std::cout << ligne << std::endl;
-	std::cout << "| Détails de tous les produits du magasin                                |" << std::endl;
-	std::cout << "|------------------------------------------------------------------------|" << std::endl;
-	std::cout << "| Nom                Description                  Quantité    Prix       |" << std::endl;
-	std::cout << "|------------------------------------------------------------------------|" << std::endl;
+	std::cout << "| Détails de tous les produits du magasin                                |\n";
+	std::cout << "|------------------------------------------------------------------------|\n";
+	std::cout << "| Nom                Description                  Quantité    Prix       |\n";
+	std::cout << "|------------------------------------------------------------------------|\n";
 	
 	for(Produit p : _produit){
 		std::cout << "| " << p << "  |" << std::endl;
@@ -35,26 +35,31 @@ void Magasin::afficher_tous_produits() const{
 	std::cout << ligne << std::endl;
 }
 void Magasin::afficher_produit(std::string nom) const{
-	int tmp=0;
+	int tmp=true;
 	for(Produit p : _produit){
 		if(p.get_titre()==nom){
 			detail_produit(p);
+			tmp=false;
 		}
 	}
-	if(tmp==0){
-		std::cout << "Le produit recherché n'est pas dans le magasin." << std::endl;
+	if(tmp){
+		std::cout << "--------------------------------------------------------------------------\n";
+		std::cout << "| Le produit recherché n'est pas dans le magasin.                        |\n";
+		std::cout << "--------------------------------------------------------------------------\n";
 	}
 }
 void Magasin::quantite_produit(std::string nom,int quantite){
-	int tmp=0;
+	int tmp=true;
 	for(Produit& p : _produit){
 		if(p.get_titre() == nom){
 			p.quantite_produit(quantite);
-			tmp=1;
+			tmp=false;
 		}
 	}
-	if(tmp==0){
-		std::cout << "Le produit recherché n'est pas dans le magasin." << std::endl;
+	if(tmp){
+		std::cout << "--------------------------------------------------------------------------\n";
+		std::cout << "| Le produit recherché n'est pas dans le magasin.                        |\n";
+		std::cout << "--------------------------------------------------------------------------\n";
 	}
 }
 void Magasin::achat_client(Client& client){

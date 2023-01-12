@@ -216,6 +216,28 @@ void afficheage_produit(Magasin& magasin){
 	std::cout << "==================================================================================\n";
 	std::cout << "|                               GESTION DU MAGASIN                               |\n";
 	std::cout << "|================================================================================|\n";
-	std::cout << "|                               AJOUT D'UN PRODUIT                               |\n";
+	std::cout << "|                             AFFICHER D'UN PRODUIT                              |\n";
 	std::cout << "|================================================================================|\n";
+	std::cout << "| Nom du produit à afficher (écrire 'tous' pour tous les afficher)               |\n";
+	std::string nom;
+	std::cin >> nom;
+	if(nom=="tous"){
+		system("clear");
+		magasin.afficher_tous_produits();
+		std::cout << "|================================================================================|\n";
+		std::cout << "| Appuyer sur un touche pour revnenir au menu.                                   |\n";
+		std::cout << "|================================================================================|\n";
+		std::cin >> nom;
+		gestion_magasin(magasin);
+	}
+	else{
+		system("clear");
+		magasin.afficher_produit(nom);
+		std::cout << "|================================================================================|\n";
+		std::cout << "| Appuyer sur un touche pour revnenir au menu.                                   |\n";
+		std::cout << "|================================================================================|\n";
+		std::cin >> nom;
+		gestion_magasin(magasin);
+	}
+
 }
