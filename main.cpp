@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <sstream>
 #include "produit.h"
 #include "client.h"
 #include "commande.h"
@@ -10,6 +11,7 @@
 void start(Magasin& magasin);
 void gestion_magasin(Magasin& magasin);
 void ajout_produit(Magasin& magasin);
+void afficheage_produit(Magasin& magasin);
 
 
 int main()
@@ -70,11 +72,17 @@ int main()
 	//client_fichier << "test d'écriture d'une ligne." << std::endl;
 	//client_fichier.close();
 	
+	//std::cout << "test dans le main" << std::endl;
+	//std::string phrase;
+	//getline(std::cin, phrase);
+	//std::cout << phrase << std::endl;
+
 	return 0;
 }
 
 
-void start(Magasin& magasin){
+void start(Magasin& magasin)
+{
 	magasin.lecture_donne();
 	system("clear");
 	std::cout << "==================================================================================\n";
@@ -88,6 +96,7 @@ void start(Magasin& magasin){
 	std::cout << "==================================================================================\n";
 	int choix=0;
 	std::cin >> choix;
+
 	if(choix==1){
 		gestion_magasin(magasin);
 	}
@@ -104,7 +113,8 @@ void start(Magasin& magasin){
 	}
 }
 
-void gestion_magasin(Magasin& magasin){
+void gestion_magasin(Magasin& magasin)
+{
 	system("clear");
 	std::cout << "==================================================================================\n";
 	std::cout << "|                               GESTION DU MAGASIN                               |\n";
@@ -117,8 +127,10 @@ void gestion_magasin(Magasin& magasin){
 	std::cout << "| Ajouter un utilisateurs : 4                                                    |\n";
 	std::cout << "| Revenir au menu :         5                                                    |\n";
 	std::cout << "==================================================================================\n";
+
 	int choix=0;
 	std::cin >> choix;
+
 	if(choix==1){
 		ajout_produit(magasin);
 	}
@@ -126,7 +138,7 @@ void gestion_magasin(Magasin& magasin){
 
 	}
 	if(choix==3){
-		
+		afficheage_produit(magasin);
 	}
 	if(choix==4){
 		
@@ -148,34 +160,62 @@ void ajout_produit(Magasin& magasin){
 	std::cout << "|================================================================================|\n";
 	std::cout << "|                               AJOUT D'UN PRODUIT                               |\n";
 	std::cout << "|================================================================================|\n";
-	std::cout << "| Nom du produit : ";
-	std::string nom;
+	std::cout << "| Nom du produit :                                                               |\n";
+	std::string nom="";
 	std::cin >> nom;
-	bool tmp=false;
+
 	for(Produit& p : magasin.get_produit())
 	{
 		if(nom==p.get_titre())
 		{
-			tmp=true;
+			std::cout << "| Un produit avec le même nom est déjà dans le magasin, voulez-vous mettre à jour|\n";
+			std::cout << "| la quantité de ce produit ?                                                    |\n";
+			std::cout << "| o pour oui et n pout non                                                       |\n";
+			std::string produit_double="";
+			std::cin >> produit_double;
+			if(produit_double=="o" || produit_double=="O")
+			{
+				std::cout << "|--------------------------------------------------------------------------------|\n";
+				std::cout << "| Entrez la nouvelle quantité pour le produit : ";
+				int quantite=0;
+				std::cin >> quantite;
+				p.quantite_produit(quantite);
+				std::cout << "|--------------------------------------------------------------------------------|\n";
+				std::cout << "| Quantité mise à jour, retour au menu de la gestion de magasin.                 |\n";
+				std::cout << "|--------------------------------------------------------------------------------|\n";
+				gestion_magasin(magasin);
+			}
+			else
+			{
+				gestion_magasin(magasin);
+			}
 		}
 	}
-	if(tmp)
-	{
-		std::cout << "| Un produit avec le même nom est déjà dans le magasin, voulez-vous mettre à jour|\n";
-		std::cout << "| la quantité de ce produit ?                                                    |\n";
-		std::cout << "| o pour oui et n pout non                                                       |\n";
-		std::string produit_double="";
-		std::cin >> produit_double;
-		if(produit_double=="o" || produit_double=="O")
-		{
-			std::cout << "|--------------------------------------------------------------------------------|\n";
-			std::cout << "| Entrez la nouvelle quantité pour le produit : ";
-			int quantite=0;
-			std::cin >> quantite;
-		}
-		else{
-			gestion_magasin(magasin);
-		}
-	}
+	std::cout << "|--------------------------------------------------------------------------------|\n";
+	std::cout << "| Description du produit :                                                       |\n";
+	std::string phrase;
+	std::cin.ignore();
+	getline(std::cin, phrase);
 
+	std::cout << "|--------------------------------------------------------------------------------|\n";
+	std::cout << "| Quantité à ajouter dans le magasin :                                           |\n";
+	int quantite_p=0;
+	std::cin >> quantite_p;
+
+	std::cout << "|--------------------------------------------------------------------------------|\n";
+	std::cout << "| Prix unitaire du produit :                                                     |\n";
+	float prix=0.0;
+	std::cin >> prix;
+	Produit produit(nom,phrase,quantite_p,prix);
+	magasin.ajout_produit(produit);
+	gestion_magasin(magasin);
+}
+
+void afficheage_produit(Magasin& magasin){
+	system("clear");
+	std::cout << "==================================================================================\n";
+	std::cout << "|                               GESTION DU MAGASIN                               |\n";
+	std::cout << "|================================================================================|\n";
+	std::cout << "|                               AJOUT D'UN PRODUIT                               |\n";
+	std::cout << "|================================================================================|\n";
 }

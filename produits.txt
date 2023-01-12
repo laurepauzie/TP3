@@ -1,5 +1,0 @@
-PS4;Console de jeu Nitendo;10;499.99
-Clavier DELL;Clavier;1;29.99
-Stylo;Stylo bleu a encre;5;3.99
-Sucette;Bonbon gout fraise;100;0.99
-Kindle;Tablette liseuse;8;100.99

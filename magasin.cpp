@@ -16,6 +16,10 @@ std::vector<Commande> Magasin::get_commande() const{
 }
 void Magasin::ajout_produit(Produit produit){
 	_produit.push_back(produit);
+	std::ofstream fichier_produit;
+	fichier_produit.open("produits.txt");
+	fichier_produit << produit.get_titre() << ";" << produit.get_description() << ";" << produit.get_quantite() << ";" << produit.get_prix_unitaire() << std::endl;
+	fichier_produit.close();
 }
 void Magasin::afficher_tous_produits() const{
 	std::string ligne="--------------------------------------------------------------------------";
