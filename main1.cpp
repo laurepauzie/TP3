@@ -109,7 +109,7 @@ void start(Magasin& magasin)
 
   }
   if (choix=="3"){
-    gestion_commande(magasin);
+
   }
   if(choix!="1" && choix!="2" && choix!="3"){
     std::cout << "Commande inconue veuillez réessayer lorsque ce message disparaîtra.\n";
@@ -367,8 +367,8 @@ void affichage_client_commande(Magasin& magasin){
   std::cout << "|--------------------------------------------------------------------------------|\n";
   for(Client& c : magasin.get_client())
   {
-    std::cout << "|   " << c.get_identifiant();
-    for(int k=c.get_identifiant().size();k<77;++k)
+    std::cout << "|   " << c.get_nom();
+    for(int k=c.get_nom().size();k<77;++k)
     {
       std::cout << " ";
     }
@@ -384,11 +384,23 @@ void affichage_client_commande(Magasin& magasin){
     std::cout << ligne << std::endl;
     std::cout << "| Détails de tous les clients du magasin                                                      |\n";
     std::cout << "|---------------------------------------------------------------------------------------------|\n";
-    std::cout << "| Nom                Prénom                                      Identifiant                  |\n";
+    std::cout << "| Identifiant                                 Nom                     Prénom                  |\n";
     std::cout << "|---------------------------------------------------------------------------------------------|\n";
   
     for(Client& c : magasin.get_client()){
-      std::cout << "| " << c << "  |" << std::endl;
+      std::cout << "| " << c.get_identifiant();
+      for(int k=c.get_identifiant().size();k<29;k++){
+        std::cout << " ";
+      }
+      std::cout << c.get_nom();
+      for(int k=c.get_nom().size();k<19;k++){
+        std::cout << " ";
+      }
+      std::cout << c.get_prenom();
+      for(int k=c.get_prenom().size();k<19;k++){
+        std::cout << " ";
+      }
+      std::cout << "  |" << std::endl;
     }
     std::cout << ligne << std::endl;
     std::cout << "==================================================================================\n";
@@ -417,10 +429,9 @@ void affichage_client_commande(Magasin& magasin){
       std::cout << "--------------------------------------------------------------------------\n";
     }
     std::cout << "==================================================================================\n";
-    std::cout << "| Appuyer sur un touche pour revnenir au menu.                                   |\n";
+    std::cout << "| Appuyer sur un touche pour revenir au menu.                                   |\n";
     std::cout << "==================================================================================\n";
     std::cin >> nom;
     gestion_commande(magasin);
   }
 }
-
