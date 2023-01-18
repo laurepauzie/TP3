@@ -15,7 +15,7 @@ void ajout_produit(Magasin& magasin);
 void afficheage_produit(Magasin& magasin);
 void ajout_client(Magasin& magasin);
 void suprimer_produit(Magasin& magasin);
-void gestion_commande(Commande& commande);
+void gestion_commande(Magasin& magasin);
 void affichage_client_commande(Magasin& magasin);
 
 int main()
@@ -365,10 +365,10 @@ void affichage_client_commande(Magasin& magasin){
   std::cout << "| Saisissez le nom du client à afficher parmis les noms suivants :               |\n";
   std::cout << "| (écrire 'tous' pour affcher tous les clients)                                  |\n";
   std::cout << "|--------------------------------------------------------------------------------|\n";
-  for(Client client.get_identifiant())
+  for(Client& c : magasin.get_client())
   {
-    std::cout << "|   " << client.get_identifiant();
-    for(int k=client.get_identifiant().size();k<77;++k)
+    std::cout << "|   " << c.get_nom();
+    for(int k=c.get_nom().size();k<77;++k)
     {
       std::cout << " ";
     }
@@ -384,11 +384,23 @@ void affichage_client_commande(Magasin& magasin){
     std::cout << ligne << std::endl;
     std::cout << "| Détails de tous les clients du magasin                                                      |\n";
     std::cout << "|---------------------------------------------------------------------------------------------|\n";
-    std::cout << "| Nom                Prénom                                      Identifiant                  |\n";
+    std::cout << "| Identifiant                                 Nom                     Prénom                  |\n";
     std::cout << "|---------------------------------------------------------------------------------------------|\n";
   
-    for(Client c : _client){
-      std::cout << "| " << c << "  |" << std::endl;
+    for(Client& c : magasin.get_client()){
+      std::cout << "| " << c.get_identifiant();
+      for(int k=c.get_identifiant().size();k<29;k++){
+        std::cout << " ";
+      }
+      std::cout << c.get_nom();
+      for(int k=c.get_nom().size();k<19;k++){
+        std::cout << " ";
+      }
+      std::cout << c.get_prenom();
+      for(int k=c.get_prenom().size();k<19;k++){
+        std::cout << " ";
+      }
+      std::cout << "  |" << std::endl;
     }
     std::cout << ligne << std::endl;
     std::cout << "==================================================================================\n";
@@ -400,7 +412,7 @@ void affichage_client_commande(Magasin& magasin){
   else{
     system("clear");
     int tmp=true;
-    for(Client c : _client){
+    for(Client& c : magasin.get_client()){
       if(c.get_nom()==nom){
         std::string ligne="-----------------------------------------------------------------------------------------------";
         std::cout << ligne << std::endl;
@@ -417,7 +429,7 @@ void affichage_client_commande(Magasin& magasin){
       std::cout << "--------------------------------------------------------------------------\n";
     }
     std::cout << "==================================================================================\n";
-    std::cout << "| Appuyer sur un touche pour revnenir au menu.                                   |\n";
+    std::cout << "| Appuyer sur un touche pour revenir au menu.                                   |\n";
     std::cout << "==================================================================================\n";
     std::cin >> nom;
     gestion_commande(magasin);
