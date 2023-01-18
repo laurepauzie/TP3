@@ -1,3 +1,6 @@
 Sucette;Bonbon a la fraise;50;1.99
 Montre;Montre Rolex;8;3699.99
 Anneau;Anneau en rubi rouge;5;399.99
+Sucette;Bonbon a la fraise;50;1.99
+Montre;Montre Rolex;8;3699.99
+Anneau;Anneau en rubi rouge;5;399.99

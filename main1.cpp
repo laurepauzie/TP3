@@ -475,7 +475,11 @@ void affichage_client_commande(Magasin& magasin){
     std::cin >> nom;
     gestion_commande(magasin);
   }
+<<<<<<< HEAD
 }
 void gestion_panier_commande(Magasin& magasin){
 
 }
+=======
+}
+>>>>>>> 34959ac823a5d9cf65a25d1b72400216d8eaa7f4

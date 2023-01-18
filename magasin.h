@@ -22,6 +22,7 @@ public:
 	void prix_produit(std::string nom,float prix);
 	void achat_client(Client& client);
 	void ajout_client(Client& client);
+	void supprimer_client(std::string identifiant);
 	void afficher_historique_commandes() const;
 	void afficher_historique_client(Client client);
 	void ajouter_panier_achat_client(Produit produit, Client& client);

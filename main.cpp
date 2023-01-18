@@ -19,6 +19,7 @@ void gestion_client(Magasin& magasin);
 void suprimer_client(Magasin& magasin);
 void modifier_quantite_produit(Magasin& magasin);
 void modifier_prix_produit(Magasin& magasin);
+void affichage_client(Magasin& magasin);
 
 int main()
 {
@@ -418,8 +419,7 @@ void gestion_client(Magasin& magasin){
 	std::cout << "| Ajouter un client :       1                                                    |\n";
 	std::cout << "| Supprimer un client :     2                                                    |\n";
 	std::cout << "| Afficher un client :      3                                                    |\n";
-	std::cout << "|                   :       4                                                    |\n";
-	std::cout << "| Revenir au menu :         5                                                    |\n";
+	std::cout << "| Revenir au menu :         4                                                    |\n";
 	std::cout << "==================================================================================\n";
 	std::cout << "> ";
 	std::string choix="0";
@@ -432,18 +432,15 @@ void gestion_client(Magasin& magasin){
 		suprimer_client(magasin);
 	}
 	if(choix=="3"){
-		afficheage_produit(magasin);
+		affichage_client(magasin);
 	}
 	if(choix=="4"){
-		
-	}
-	if(choix=="5"){
 		start(magasin);
 	}
-	if(choix!="1" && choix!="2" && choix!="3" && choix!="4" && choix!="5"){
+	if(choix!="1" && choix!="2" && choix!="3" && choix!="4"){
 		std::cout << "Commande inconue veuillez réessayer lorsque ce message disparaîtra.\n";
 		sleep(3);
-		gestion_magasin(magasin);
+		gestion_client(magasin);
 	}
 }
 void ajout_client(Magasin& magasin){
@@ -469,7 +466,7 @@ void ajout_client(Magasin& magasin){
 	std::vector<Produit> panier_achat = {};
 	Client client(identifiant,nom,prenom,panier_achat);
 	magasin.ajout_client(client);
-	gestion_magasin(magasin);
+	gestion_client(magasin);
 }
 void suprimer_client(Magasin& magasin){
 	system("clear");
@@ -481,6 +478,36 @@ void suprimer_client(Magasin& magasin){
 	std::cout << "| Saisissez l'identifiant du client à supprimer parmis la liste suivantes :      |\n";
 	std::cout << "|--------------------------------------------------------------------------------|\n";
 	for(Client& c : magasin.get_client()){
-
+		std::cout << "| " << c.get_identifiant();
+		for(int k=c.get_identifiant().size();k<79;++k){
+			std::cout << " ";
+		}
+		std::cout << "|\n";
 	}
+	std::cout << "|--------------------------------------------------------------------------------|\n" << ">";
+	std::string identifiant="";
+	std::cin >> identifiant;
+	magasin.supprimer_client(identifiant);
+	gestion_client(magasin);
+}
+void affichage_client(Magasin& magasin){
+	system("clear");
+	std::cout << "==================================================================================\n";
+	std::cout << "|                               GESTION DES CLIENTS                              |\n";
+	std::cout << "|================================================================================|\n";
+	std::cout << "|                               AFFICHER UN CLIENT                               |\n";
+	std::cout << "|--------------------------------------------------------------------------------|\n";
+	std::cout << "| Saisissez l'identifiant du client à afficher parmis la liste suivantes :       |\n";
+	std::cout << "| (saisir 'tous' pour afficher tous les clients)                                 |\n";
+	std::cout << "|--------------------------------------------------------------------------------|\n";
+	for(Client& c : magasin.get_client()){
+		std::cout << "| " << c.get_identifiant();
+		for(int k=c.get_identifiant().size();k<79;++k){
+			std::cout << " ";
+		}
+		std::cout << "|\n";
+	}
+	std::cout << "|--------------------------------------------------------------------------------|\n" << ">";
+	std::string identifiant="";
+	std::cin >> identifiant;
 }

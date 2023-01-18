@@ -241,3 +241,18 @@ void Magasin::ajout_client(Client& client){
 	_client.push_back(client);
 	mise_a_jour();
 }
+void Magasin::supprimer_client(std::string identifiant){
+	int indice=0;
+	bool tmp=false;
+	for(long unsigned int k=0;k<_client.size();++k)
+	{
+		if(_client.at(k).get_identifiant()==identifiant){
+			indice=k;
+			tmp=true;
+		}
+	}
+	if(tmp){
+		_client.erase(_client.begin()+indice);
+		mise_a_jour();
+	}
+}
