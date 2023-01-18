@@ -15,7 +15,7 @@ void ajout_produit(Magasin& magasin);
 void afficheage_produit(Magasin& magasin);
 void ajout_client(Magasin& magasin);
 void suprimer_produit(Magasin& magasin);
-void gestion_commande(Commande& commande);
+void gestion_commande(Magasin& magasin);
 void affichage_client_commande(Magasin& magasin);
 
 int main()
@@ -109,7 +109,7 @@ void start(Magasin& magasin)
 
   }
   if (choix=="3"){
-
+    gestion_commande(magasin);
   }
   if(choix!="1" && choix!="2" && choix!="3"){
     std::cout << "Commande inconue veuillez réessayer lorsque ce message disparaîtra.\n";
@@ -365,10 +365,10 @@ void affichage_client_commande(Magasin& magasin){
   std::cout << "| Saisissez le nom du client à afficher parmis les noms suivants :               |\n";
   std::cout << "| (écrire 'tous' pour affcher tous les clients)                                  |\n";
   std::cout << "|--------------------------------------------------------------------------------|\n";
-  for(Client client.get_identifiant())
+  for(Client& c : magasin.get_client())
   {
-    std::cout << "|   " << client.get_identifiant();
-    for(int k=client.get_identifiant().size();k<77;++k)
+    std::cout << "|   " << c.get_identifiant();
+    for(int k=c.get_identifiant().size();k<77;++k)
     {
       std::cout << " ";
     }
@@ -387,7 +387,7 @@ void affichage_client_commande(Magasin& magasin){
     std::cout << "| Nom                Prénom                                      Identifiant                  |\n";
     std::cout << "|---------------------------------------------------------------------------------------------|\n";
   
-    for(Client c : _client){
+    for(Client& c : magasin.get_client()){
       std::cout << "| " << c << "  |" << std::endl;
     }
     std::cout << ligne << std::endl;
@@ -400,7 +400,7 @@ void affichage_client_commande(Magasin& magasin){
   else{
     system("clear");
     int tmp=true;
-    for(Client c : _client){
+    for(Client& c : magasin.get_client()){
       if(c.get_nom()==nom){
         std::string ligne="-----------------------------------------------------------------------------------------------";
         std::cout << ligne << std::endl;
