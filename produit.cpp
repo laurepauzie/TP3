@@ -28,9 +28,9 @@ void Produit::quantite_produit(int quantite){
 	_quantite = quantite;
 }
 void detail_produit(Produit& produit){
-	std::string ligne="------------------------------------------------------------------------------------";
+	std::string ligne="-----------------------------------------------------------------------------------------------";
 	std::cout << ligne << std::endl;
-	std::cout << "| Détail du produit                                                                |" << std::endl;
+	std::cout << "| Détail du produit                                                                           |" << std::endl;
 	std::cout << "|---------------------------------------------------------------------------------------------|" << std::endl;
 	std::cout << "| " << produit << "  |" << std::endl;
 	std::cout << ligne << std::endl;

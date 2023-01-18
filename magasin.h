@@ -27,6 +27,7 @@ public:
 	void supprimer_panier_achat_client(Produit produit, Client& client);
 	void modifier_quantite_produit_panier_client(Produit produit, Client& client, int quantite);
 	void lecture_donne();
+	void mise_a_jour();
 private:
 	std::vector<Produit> _produit;
 	std::vector<Client> _client;

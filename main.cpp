@@ -97,19 +97,19 @@ void start(Magasin& magasin)
 	std::cout << "| Gestion des commandes :    3                                                   |\n";
 	std::cout << "==================================================================================\n";
 	std::cout << "> ";
-	int choix=0;
+	std::string choix="0";
 	std::cin >> choix;
 
-	if(choix==1){
+	if(choix=="1"){
 		gestion_magasin(magasin);
 	}
-	if (choix==2){
+	if (choix=="2"){
 
 	}
-	if (choix==3){
+	if (choix=="3"){
 
 	}
-	if(choix!=1 && choix!=2 && choix!=3){
+	if(choix!="1" && choix!="2" && choix!="3"){
 		std::cout << "Commande inconue veuillez réessayer lorsque ce message disparaîtra.\n";
 		sleep(3);
 		start(magasin);
@@ -131,25 +131,25 @@ void gestion_magasin(Magasin& magasin)
 	std::cout << "| Revenir au menu :         5                                                    |\n";
 	std::cout << "==================================================================================\n";
 	std::cout << "> ";
-	int choix=0;
+	std::string choix="0";
 	std::cin >> choix;
 
-	if(choix==1){
+	if(choix=="1"){
 		ajout_produit(magasin);
 	}
-	if(choix==2){
+	if(choix=="2"){
 		suprimer_produit(magasin);
 	}
-	if(choix==3){
+	if(choix=="3"){
 		afficheage_produit(magasin);
 	}
-	if(choix==4){
+	if(choix=="4"){
 		ajout_client(magasin);
 	}
-	if(choix==5){
+	if(choix=="5"){
 		start(magasin);
 	}
-	if(choix!=1 && choix!=2 && choix!=3 && choix!=4 && choix!=5){
+	if(choix!="1" && choix!="2" && choix!="3" && choix!="4" && choix!="5"){
 		std::cout << "Commande inconue veuillez réessayer lorsque ce message disparaîtra.\n";
 		sleep(3);
 		gestion_magasin(magasin);
@@ -249,8 +249,11 @@ void suprimer_produit(Magasin& magasin){
 	std::cin >> nom;
 	for(Produit p : magasin.get_produit())
 	{
-		
+		if(nom==p.get_titre()){
+			magasin.supprimer_produit(p);
+		}
 	}
+	gestion_magasin(magasin);
 }
 
 void afficheage_produit(Magasin& magasin){

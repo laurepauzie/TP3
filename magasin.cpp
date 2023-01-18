@@ -14,15 +14,24 @@ std::vector<Client> Magasin::get_client() const{
 std::vector<Commande> Magasin::get_commande() const{
 	return _commande;
 }
-void Magasin::ajout_produit(Produit produit){
-	_produit.push_back(produit);
+void Magasin::mise_a_jour(){
 	std::ofstream fichier_produit;
 	fichier_produit.open("produits.txt");
 	for(Produit& p : _produit){
 		fichier_produit << p.get_titre() << ";" << p.get_description() << ";" << p.get_quantite() << ";" << p.get_prix_unitaire() << std::endl;
 	}
-
 	fichier_produit.close();
+
+	std::ofstream fichier_client;
+	fichier_client.open("clients.txt");
+	for(Client& c : _client){
+		fichier_client << c.get_identifiant() << ";" << c.get_nom() << ";" << c.get_prenom() << ";" << std::endl;
+	}
+	fichier_client.close();
+}
+void Magasin::ajout_produit(Produit produit){
+	_produit.push_back(produit);
+	mise_a_jour();
 }
 void Magasin::afficher_tous_produits() const{
 	std::string ligne="-----------------------------------------------------------------------------------------------";
@@ -209,14 +218,10 @@ void Magasin::supprimer_produit(Produit produit){
 			indice=k;
 		}
 	}
+	_produit.erase(_produit.begin()+indice);
+	mise_a_jour();
 }
 void Magasin::ajout_client(Client& client){
 	_client.push_back(client);
-	std::ofstream fichier_client;
-	fichier_client.open("clients.txt");
-	for(Client& c : _client){
-		fichier_client << c.get_identifiant() << ";" << c.get_nom() << ";" << c.get_prenom() << ";" << std::endl;
-	}
-
-	fichier_client.close();
+	mise_a_jour();
 }

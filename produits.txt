@@ -1,4 +1,3 @@
 Sucette;Bonbon a la fraise;50;5.55
 Montre;Montre Rolex;2;3599.99
 Anneau;Anneau en rubi rouge;5;399.99
-Veste;Veste Gucci blanche homme;200;699.99
