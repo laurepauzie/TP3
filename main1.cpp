@@ -16,7 +16,9 @@ void afficheage_produit(Magasin& magasin);
 void ajout_client(Magasin& magasin);
 void suprimer_produit(Magasin& magasin);
 void gestion_commande(Magasin& magasin);
+void passer_commande(Magasin& magasin);
 void affichage_client_commande(Magasin& magasin);
+void gestion_panier_commande(Magasin& magasin);
 
 int main()
 {
@@ -285,7 +287,7 @@ void afficheage_produit(Magasin& magasin){
     system("clear");
     magasin.afficher_tous_produits();
     std::cout << "==================================================================================\n";
-    std::cout << "| Appuyer sur un touche pour revnenir au menu.                                   |\n";
+    std::cout << "| Appuyer sur un touche pour revenir au menu.                                    |\n";
     std::cout << "==================================================================================\n";
     std::cin >> nom;
     gestion_magasin(magasin);
@@ -294,7 +296,7 @@ void afficheage_produit(Magasin& magasin){
     system("clear");
     magasin.afficher_produit(nom);
     std::cout << "==================================================================================\n";
-    std::cout << "| Appuyer sur un touche pour revnenir au menu.                                   |\n";
+    std::cout << "| Appuyer sur un touche pour revenir au menu.                                    |\n";
     std::cout << "==================================================================================\n";
     std::cin >> nom;
     gestion_magasin(magasin);
@@ -334,8 +336,36 @@ void gestion_commande(Magasin& magasin){
   std::cout << "|================================================================================|\n";
   std::cout << "| Séléctionnez une action à faire parmis les suivantes :                         |\n";
   std::cout << "|--------------------------------------------------------------------------------|\n";
-  std::cout << "| Afficher un client :      1                                                    |\n";
-  std::cout << "| Revenir au menu :         2                                                    |\n";
+  std::cout << "| Passer une commande :      1                                                   |\n";
+  std::cout << "| Revenir au menu :          2                                                   |\n";
+  std::cout << "==================================================================================\n";
+  std::cout << "> ";
+  std::string choix="0";
+  std::cin >> choix;
+
+  if(choix=="1"){
+
+  }
+
+  if(choix=="2"){
+    start(magasin);
+  }
+  if(choix!="1" && choix!="2"){
+    std::cout << "Commande inconue veuillez réessayer lorsque ce message disparaîtra.\n";
+    sleep(3);
+    gestion_commande(magasin);
+  }
+}
+
+void passer_commande(Magasin& magasin){
+  system("clear");
+  std::cout << "==================================================================================\n";
+  std::cout << "|                               GESTION DES COMMANDES                            |\n";
+  std::cout << "|================================================================================|\n";
+  std::cout << "|                               PASSER UNE COMMANDE                              |\n";
+  std::cout << "|--------------------------------------------------------------------------------|\n";
+  std::cout << "| Choisir un client :        1                                                   |\n";
+  std::cout << "| Revenir au menu :          2                                                   |\n";
   std::cout << "==================================================================================\n";
   std::cout << "> ";
   std::string choix="0";
@@ -346,12 +376,12 @@ void gestion_commande(Magasin& magasin){
   }
 
   if(choix=="2"){
-    start(magasin);
+    gestion_commande(magasin);
   }
   if(choix!="1" && choix!="2"){
     std::cout << "Commande inconue veuillez réessayer lorsque ce message disparaîtra.\n";
     sleep(3);
-    gestion_commande(magasin);
+    passer_commande(magasin);
   }
 }
 
@@ -429,10 +459,23 @@ void affichage_client_commande(Magasin& magasin){
       std::cout << "--------------------------------------------------------------------------\n";
     }
     std::cout << "==================================================================================\n";
-    std::cout << "| Appuyer sur un touche pour revenir au menu.                                   |\n";
+    std::cout << "| Voulez-vous choisir ce client?                                                 |\n";
+    std::cout << "| o pour oui et n pout non                                                       |\n";
+    std::cout << "----------------------------------------------------------------------------------\n";
+    std::cin >> nom;
+    if((nom=='o') || (nom=='O') || (nom=='0')){
+      gestion_panier_commande(magasin);
+    }
+    else if((nom=='n') || (nom=='N')){
+      passer_commande(magasin);
+    }
+    std::cout << "==================================================================================\n";
+    std::cout << "| Appuyer sur un touche pour revenir au menu.                                    |\n";
     std::cout << "==================================================================================\n";
     std::cin >> nom;
     gestion_commande(magasin);
   }
 }
+void gestion_panier_commande(Magasin& magasin){
 
+}
