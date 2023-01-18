@@ -1,3 +1,2 @@
-lchapus;CHAPUS;Louka
-lpauzie;PAUZIE;Laure
-rzapata;ZAPATA;Romain
+LChapus;Chapus;Louka;
+LPauzie;Pauzie;Laure;

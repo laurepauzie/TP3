@@ -20,6 +20,7 @@ public:
 	void afficher_produit(std::string nom) const;
 	void quantite_produit(std::string nom,int quantite);
 	void achat_client(Client& client);
+	void ajout_client(Client& client);
 	void afficher_historique_commandes() const;
 	void afficher_historique_client(Client client);
 	void ajouter_panier_achat_client(Produit produit, Client& client);

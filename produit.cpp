@@ -57,12 +57,15 @@ std::ostream& operator<<(std::ostream& os, const Produit& produit){
 	}
 	
 	if(produit.get_prix_unitaire()<100.0 && produit.get_prix_unitaire()>=10.0){
-		os << produit.get_prix_unitaire() << "  € ";
-	}
-	if(produit.get_prix_unitaire()<10.0){
 		os << produit.get_prix_unitaire() << "   € ";
 	}
-	if(produit.get_prix_unitaire()>=100.0){
+	if(produit.get_prix_unitaire()<10.0){
+		os << produit.get_prix_unitaire() << "    € ";
+	}
+	if(produit.get_prix_unitaire()>=100.0 && produit.get_prix_unitaire() <1000.0){
+		os << produit.get_prix_unitaire() << "  € ";
+	}
+	if(produit.get_prix_unitaire()>=1000.0){
 		os << produit.get_prix_unitaire() << " € ";
 	}
 	return os;

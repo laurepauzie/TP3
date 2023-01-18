@@ -18,7 +18,10 @@ void Magasin::ajout_produit(Produit produit){
 	_produit.push_back(produit);
 	std::ofstream fichier_produit;
 	fichier_produit.open("produits.txt");
-	fichier_produit << produit.get_titre() << ";" << produit.get_description() << ";" << produit.get_quantite() << ";" << produit.get_prix_unitaire() << std::endl;
+	for(Produit& p : _produit){
+		fichier_produit << p.get_titre() << ";" << p.get_description() << ";" << p.get_quantite() << ";" << p.get_prix_unitaire() << std::endl;
+	}
+
 	fichier_produit.close();
 }
 void Magasin::afficher_tous_produits() const{
@@ -200,10 +203,20 @@ void Magasin::lecture_donne(){
 
 void Magasin::supprimer_produit(Produit produit){
 	int indice=0;
-	for(int k=0;k<_produit.size();++k)
+	for(long unsigned int k=0;k<_produit.size();++k)
 	{
 		if(_produit.at(k).get_titre()==produit.get_titre()){
 			indice=k;
 		}
 	}
+}
+void Magasin::ajout_client(Client& client){
+	_client.push_back(client);
+	std::ofstream fichier_client;
+	fichier_client.open("clients.txt");
+	for(Client& c : _client){
+		fichier_client << c.get_identifiant() << ";" << c.get_nom() << ";" << c.get_prenom() << ";" << std::endl;
+	}
+
+	fichier_client.close();
 }

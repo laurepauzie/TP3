@@ -96,7 +96,7 @@ void start(Magasin& magasin)
 	std::cout << "| Gestion des clients :      2                                                   |\n";
 	std::cout << "| Gestion des commandes :    3                                                   |\n";
 	std::cout << "==================================================================================\n";
-
+	std::cout << "> ";
 	int choix=0;
 	std::cin >> choix;
 
@@ -301,11 +301,23 @@ void ajout_client(Magasin& magasin){
 	std::cout << "==================================================================================\n";
 	std::cout << "|                               GESTION DU MAGASIN                               |\n";
 	std::cout << "|================================================================================|\n";
-	std::cout << "|                         	   AJOUT D'UN CLIENT                               |\n";
+	std::cout << "|                         	  AJOUT D'UN CLIENT                                |\n";
 	std::cout << "|================================================================================|\n";
 	std::cout << "| Nom du client :                                                                |\n";
 	std::cout << "|--------------------------------------------------------------------------------|\n";
 	std::cout << "> ";
 	std::string nom="";
 	std::cin >> nom;
+	std::cout << "|--------------------------------------------------------------------------------|\n";
+	std::cout << "| Prénom du client :                                                             |\n";
+	std::cout << "|--------------------------------------------------------------------------------|\n";
+	std::cout << "> ";
+	std::string prenom="";
+	std::cin >> prenom;
+	std::string identifiant="";
+	identifiant = prenom+nom;
+	std::vector<Produit> panier_achat = {};
+	Client client(identifiant,nom,prenom,panier_achat);
+	magasin.ajout_client(client);
+	gestion_magasin(magasin);
 }
