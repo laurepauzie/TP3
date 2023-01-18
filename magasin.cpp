@@ -22,12 +22,12 @@ void Magasin::ajout_produit(Produit produit){
 	fichier_produit.close();
 }
 void Magasin::afficher_tous_produits() const{
-	std::string ligne="--------------------------------------------------------------------------";
+	std::string ligne="-----------------------------------------------------------------------------------------------";
 	std::cout << ligne << std::endl;
-	std::cout << "| Détails de tous les produits du magasin                                |\n";
-	std::cout << "|------------------------------------------------------------------------|\n";
-	std::cout << "| Nom                Description                  Quantité    Prix       |\n";
-	std::cout << "|------------------------------------------------------------------------|\n";
+	std::cout << "| Détails de tous les produits du magasin                                                     |\n";
+	std::cout << "|---------------------------------------------------------------------------------------------|\n";
+	std::cout << "| Nom                Description                                      Quantité   Prix         |\n";
+	std::cout << "|---------------------------------------------------------------------------------------------|\n";
 	
 	for(Produit p : _produit){
 		std::cout << "| " << p << "  |" << std::endl;

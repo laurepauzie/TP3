@@ -31,7 +31,7 @@ void detail_produit(Produit& produit){
 	std::string ligne="------------------------------------------------------------------------------------";
 	std::cout << ligne << std::endl;
 	std::cout << "| Détail du produit                                                                |" << std::endl;
-	std::cout << "|----------------------------------------------------------------------------------|" << std::endl;
+	std::cout << "|---------------------------------------------------------------------------------------------|" << std::endl;
 	std::cout << "| " << produit << "  |" << std::endl;
 	std::cout << ligne << std::endl;
 }
