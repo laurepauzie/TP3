@@ -15,6 +15,10 @@ void ajout_produit(Magasin& magasin);
 void afficheage_produit(Magasin& magasin);
 void ajout_client(Magasin& magasin);
 void suprimer_produit(Magasin& magasin);
+void gestion_client(Magasin& magasin);
+void suprimer_client(Magasin& magasin);
+void modifier_quantite_produit(Magasin& magasin);
+void modifier_prix_produit(Magasin& magasin);
 
 int main()
 {
@@ -104,7 +108,7 @@ void start(Magasin& magasin)
 		gestion_magasin(magasin);
 	}
 	if (choix=="2"){
-
+		gestion_client(magasin);
 	}
 	if (choix=="3"){
 
@@ -124,11 +128,12 @@ void gestion_magasin(Magasin& magasin)
 	std::cout << "|================================================================================|\n";
 	std::cout << "| Séléctionnez une action à faire parmis les suivantes :                         |\n";
 	std::cout << "|--------------------------------------------------------------------------------|\n";
-	std::cout << "| Ajouter un produit :      1                                                    |\n";
-	std::cout << "| Supprimer un produit :    2                                                    |\n";
-	std::cout << "| Afficher un produit :     3                                                    |\n";
-	std::cout << "| Ajouter un client :       4                                                    |\n";
-	std::cout << "| Revenir au menu :         5                                                    |\n";
+	std::cout << "| Ajouter un produit :        1                                                  |\n";
+	std::cout << "| Supprimer un produit :      2                                                  |\n";
+	std::cout << "| Afficher un produit :       3                                                  |\n";
+	std::cout << "| Modifier quantité produit : 4                                                  |\n";
+	std::cout << "| Modifier prix produit :     5                                                  |\n";
+	std::cout << "| Revenir au menu :           6                                                  |\n";
 	std::cout << "==================================================================================\n";
 	std::cout << "> ";
 	std::string choix="0";
@@ -144,12 +149,15 @@ void gestion_magasin(Magasin& magasin)
 		afficheage_produit(magasin);
 	}
 	if(choix=="4"){
-		ajout_client(magasin);
+		modifier_quantite_produit(magasin);
 	}
 	if(choix=="5"){
+		modifier_prix_produit(magasin);
+	}
+	if(choix=="6"){
 		start(magasin);
 	}
-	if(choix!="1" && choix!="2" && choix!="3" && choix!="4" && choix!="5"){
+	if(choix!="1" && choix!="2" && choix!="3" && choix!="4" && choix!="5" && choix!="6"){
 		std::cout << "Commande inconue veuillez réessayer lorsque ce message disparaîtra.\n";
 		sleep(3);
 		gestion_magasin(magasin);
@@ -276,7 +284,7 @@ void afficheage_produit(Magasin& magasin){
 		std::cout << "|\n";
 	}
 
-	std::cout << "==================================================================================\n";
+	std::cout << "==================================================================================\n" << ">";
 	std::string nom;
 	std::cin >> nom;
 	if(nom=="tous"){
@@ -298,11 +306,150 @@ void afficheage_produit(Magasin& magasin){
 		gestion_magasin(magasin);
 	}
 }
-
-void ajout_client(Magasin& magasin){
+void modifier_quantite_produit(Magasin& magasin){
 	system("clear");
 	std::cout << "==================================================================================\n";
 	std::cout << "|                               GESTION DU MAGASIN                               |\n";
+	std::cout << "|================================================================================|\n";
+	std::cout << "|                           MODIFIER QUANTITE PRODUIT                            |\n";
+	std::cout << "|--------------------------------------------------------------------------------|\n";
+	std::cout << "| Saisissez le nom du produit parmis les noms suivants :                         |\n";
+	std::cout << "|--------------------------------------------------------------------------------|\n";
+	for(Produit p : magasin.get_produit())
+	{
+		std::cout << "|   " << p.get_titre();
+		for(int k=p.get_titre().size();k<77;++k)
+		{
+			std::cout << " ";
+		}
+		std::cout << "|\n";
+	}
+	std::cout << "|--------------------------------------------------------------------------------|\n" << ">";
+	std::string nom;
+	std::cin >> nom;
+	int indice=0;
+	for(long unsigned int k=0;k<magasin.get_produit().size();++k){
+		if(magasin.get_produit().at(k).get_titre()==nom){
+			indice=k;
+		}
+	}
+	std::cout << "|--------------------------------------------------------------------------------|\n";
+	std::cout << "| Quantité actuelle de produit : ";
+	int quantite=0;
+	quantite=magasin.get_produit().at(indice).get_quantite();
+	if(quantite<10){
+		std::cout << quantite << "                                               |\n";
+	}
+	if(quantite<100 && quantite>=10){
+		std::cout << quantite << "                                              |\n";
+	}
+	if(quantite<1000 && quantite>=100){
+		std::cout << quantite << "                                             |\n";
+	}
+	std::cout << "|--------------------------------------------------------------------------------|\n";
+	std::cout << "| Entrez la nouvelle quantité pour ce produit :                                  |\n";
+	std::cout << "|--------------------------------------------------------------------------------|\n";
+	std::cout << "> ";
+	int nouvelle_quantite=0;
+	std::cin >> nouvelle_quantite;
+	magasin.quantite_produit(nom,nouvelle_quantite);
+	gestion_magasin(magasin);
+}
+void modifier_prix_produit(Magasin& magasin){
+system("clear");
+	std::cout << "==================================================================================\n";
+	std::cout << "|                               GESTION DU MAGASIN                               |\n";
+	std::cout << "|================================================================================|\n";
+	std::cout << "|                              MODIFIER PRIX PRODUIT                             |\n";
+	std::cout << "|--------------------------------------------------------------------------------|\n";
+	std::cout << "| Saisissez le nom du produit parmis les noms suivants :                         |\n";
+	std::cout << "|--------------------------------------------------------------------------------|\n";
+	for(Produit p : magasin.get_produit())
+	{
+		std::cout << "|   " << p.get_titre();
+		for(int k=p.get_titre().size();k<77;++k)
+		{
+			std::cout << " ";
+		}
+		std::cout << "|\n";
+	}
+	std::cout << "|--------------------------------------------------------------------------------|\n" << ">";
+	std::string nom;
+	std::cin >> nom;
+	int indice=0;
+	for(long unsigned int k=0;k<magasin.get_produit().size();++k){
+		if(magasin.get_produit().at(k).get_titre()==nom){
+			indice=k;
+		}
+	}
+	std::cout << "|--------------------------------------------------------------------------------|\n";
+	std::cout << "| Prix unitaire actuelle du produit : ";
+	float prix=0.0;
+	prix=magasin.get_produit().at(indice).get_prix_unitaire();
+	if(prix<10.0){
+		std::cout << prix << " €                                     |\n";
+	}
+	if(prix<100.0 && prix>=10.0){
+		std::cout << prix << " €                                    |\n";
+	}
+	if(prix<1000.0 && prix>=100.0){
+		std::cout << prix << " €                                   |\n";
+	}
+	if(prix>=1000.0){
+		std::cout << prix << " €                                  |\n";
+	}
+	std::cout << "|--------------------------------------------------------------------------------|\n";
+	std::cout << "| Entrez le nouveau prix pour ce produit :                                       |\n";
+	std::cout << "|--------------------------------------------------------------------------------|\n";
+	std::cout << "> ";
+	float nouveau_prix=0.0;
+	std::cin >> nouveau_prix;
+	magasin.prix_produit(nom,nouveau_prix);
+	gestion_magasin(magasin);
+
+}
+void gestion_client(Magasin& magasin){
+	system("clear");
+	std::cout << "==================================================================================\n";
+	std::cout << "|                               GESTION DES CLIENTS                              |\n";
+	std::cout << "|================================================================================|\n";
+	std::cout << "| Séléctionnez une action à faire parmis les suivantes :                         |\n";
+	std::cout << "|--------------------------------------------------------------------------------|\n";
+	std::cout << "| Ajouter un client :       1                                                    |\n";
+	std::cout << "| Supprimer un client :     2                                                    |\n";
+	std::cout << "| Afficher un client :      3                                                    |\n";
+	std::cout << "|                   :       4                                                    |\n";
+	std::cout << "| Revenir au menu :         5                                                    |\n";
+	std::cout << "==================================================================================\n";
+	std::cout << "> ";
+	std::string choix="0";
+	std::cin >> choix;
+
+	if(choix=="1"){
+		ajout_client(magasin);
+	}
+	if(choix=="2"){
+		suprimer_client(magasin);
+	}
+	if(choix=="3"){
+		afficheage_produit(magasin);
+	}
+	if(choix=="4"){
+		
+	}
+	if(choix=="5"){
+		start(magasin);
+	}
+	if(choix!="1" && choix!="2" && choix!="3" && choix!="4" && choix!="5"){
+		std::cout << "Commande inconue veuillez réessayer lorsque ce message disparaîtra.\n";
+		sleep(3);
+		gestion_magasin(magasin);
+	}
+}
+void ajout_client(Magasin& magasin){
+	system("clear");
+	std::cout << "==================================================================================\n";
+	std::cout << "|                               GESTION DES CLIENTS                              |\n";
 	std::cout << "|================================================================================|\n";
 	std::cout << "|                         	  AJOUT D'UN CLIENT                                |\n";
 	std::cout << "|================================================================================|\n";
@@ -323,4 +470,17 @@ void ajout_client(Magasin& magasin){
 	Client client(identifiant,nom,prenom,panier_achat);
 	magasin.ajout_client(client);
 	gestion_magasin(magasin);
+}
+void suprimer_client(Magasin& magasin){
+	system("clear");
+	std::cout << "==================================================================================\n";
+	std::cout << "|                               GESTION DES CLIENTS                              |\n";
+	std::cout << "|================================================================================|\n";
+	std::cout << "|                               SUPPRIMER UN CLIENT                              |\n";
+	std::cout << "|--------------------------------------------------------------------------------|\n";
+	std::cout << "| Saisissez l'identifiant du client à supprimer parmis la liste suivantes :      |\n";
+	std::cout << "|--------------------------------------------------------------------------------|\n";
+	for(Client& c : magasin.get_client()){
+
+	}
 }

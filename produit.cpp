@@ -27,6 +27,11 @@ void Produit::quantite_produit(int quantite){
 	assert(status && "quantité négative lors de la mise à jour");
 	_quantite = quantite;
 }
+void Produit::prix_produit(float prix){
+	bool status = (prix>=0.0);
+	assert(status && "prix négatif lors de la mise à jour");
+	_prix_unitaire = prix;
+}
 void detail_produit(Produit& produit){
 	std::string ligne="-----------------------------------------------------------------------------------------------";
 	std::cout << ligne << std::endl;
