@@ -73,6 +73,22 @@ void Magasin::quantite_produit(std::string nom,int quantite){
 		std::cout << "| Le produit recherché n'est pas dans le magasin.                        |\n";
 		std::cout << "--------------------------------------------------------------------------\n";
 	}
+	mise_a_jour();
+}
+void Magasin::prix_produit(std::string nom,float prix){
+	int tmp=true;
+	for(Produit& p : _produit){
+		if(p.get_titre() == nom){
+			p.prix_produit(prix);
+			tmp=false;
+		}
+	}
+	if(tmp){
+		std::cout << "--------------------------------------------------------------------------\n";
+		std::cout << "| Le produit recherché n'est pas dans le magasin.                        |\n";
+		std::cout << "--------------------------------------------------------------------------\n";
+	}
+	mise_a_jour();
 }
 void Magasin::achat_client(Client& client){
 	bool tmp=true;
